@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+  <property>
+    <name>tweet_piddir</name>
+    <value>/var/run/tweetdemo</value>
+    <description>Process ID Directory</description>
+  </property>
+
+  <property>
+    <name>nifi_dir</name>
+    <value>/opt/HDF-1.2.0.0</value>
+    <description>Hortonworks DataFlow installation directory</description>
+  </property>
+
+  <property require-input="true">
+    <name>consumer_key</name>
+    <value></value>
+    <description>The Consumer Key provided by Twitter</description>
+  </property>
+
+  <property require-input="true">
+    <name>consumer_secret</name>
+    <value></value>
+    <description>The Consumer Secret provided by Twitter</description>
+  </property>
+
+  <property require-input="true">
+    <name>access_token</name>
+    <value></value>
+    <description>The Access Token provided by Twitter</description>
+  </property>
+
+  <property require-input="true">
+    <name>access_secret</name>
+    <value></value>
+    <description>The Access Token Secret provided by Twitter</description>
+  </property>
+
+  <property>
+    <name>content</name>
+    <description>This is the jinja template for config.properties file</description>
+    <value>
+#### KAFKA SETTINGS ####
+kafka.brokers={{kafka_broker_host}}:{{kafka_port}}
+kafka.zookeeper.host.port={{kafka_broker_host}}:2181
+kafka.topic=truck_events
+kafka.zkRoot=
+kafka.consumer.group.id=group1
+
+
+    </value>
+  </property>
+</configuration>

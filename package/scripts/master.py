@@ -25,6 +25,20 @@ from subprocess import call
 class Master(Script):
   def install(self, env):
     self.install_packages(env)
+    import params
+
+    Execute('echo Scriptdir is: ' + params.service_scriptsdir)
+
+    Execute('echo ambari host: ' + params.ambari_server_host)
+    Execute('echo namenode host: ' + params.namenode_host)
+    Execute('echo nimbus host: ' + params.nimbus_host)
+    Execute('echo hive host: ' + params.hive_metastore_host)
+    Execute('echo hbase host: ' + params.hbase_master_host)
+    Execute('echo kafka broker: ' + params.kafka_broker_host
+
+    Execute('echo Copying nifi flow to ' + params.nifi_dir + '/conf')
+    Execute('cp ' + params.service_scriptsdir + '../resources/flow.xml.gz ' + params.nifi_dir + '/conf/')
+    self.configure(env)
    
   def configure(self, env):
     Execute ('echo configure')
