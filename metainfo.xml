@@ -45,6 +45,14 @@
                 <co-locate>TWEETDEMO/TWEETDEMO_MASTER</co-locate>
               </auto-deploy>
             </dependency>
+            <dependency>
+              <name>NIFI/NIFI_MASTER</name>
+              <scope>host</scope>
+              <auto-deploy>
+                <enabled>true</enabled>
+                <co-locate>TWEETDEMO/TWEETDEMO_MASTER</co-locate>
+              </auto-deploy>
+            </dependency>
           </dependencies>
           <commandScript>
             <script>scripts/master.py</script>
@@ -65,7 +73,17 @@
       <requiredServices>
         <service>HDFS</service>
         <service>STORM</service>
+        <service>NIFI</service>
+        <service>KAFKA</service>
       </requiredServices>
+      <configuration-dependencies>
+        <config-type>nifi-ambari-config</config-type>
+        <config-type>nifi-bootstrap-env</config-type>
+        <config-type>nifi-flow-env</config-type>
+        <config-type>nifi-logback-env</config-type>
+        <config-type>nifi-properties-env</config-type>
+        <config-type>nifi-ambari-config</config-type>
+      </configuration-dependencies>
     </service>
   </services>
 </metainfo>

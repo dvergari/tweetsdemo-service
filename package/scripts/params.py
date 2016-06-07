@@ -7,9 +7,17 @@ config = Script.get_config()
 
 service_scriptsdir = os.path.realpath(__file__).split('/scripts')[0] + '/scripts/'
 
-nifi_dir = config['configurations']['tweet-env']['nifi_dir']
+
+### demo configuration ###
+demo_installdir = config['configurations']['tweet-env']['tweet_installdir']
 tweet_piddir = config['configurations']['tweet-env']['tweet_piddir']
 
+
+### Ambari configuration ###
+ambari_username = config['configurations']['user-env']['ambari_username']
+ambari_password = config['configurations']['user-env']['ambari_password']
+ambari_port = config['configurations']['user-env']['ambari_port']
+user_env = config['configurations']['user-env']['content']
 
 ### Twitter configuration ###
 consumer_key = config['configurations']['tweet-env']['consumer_key']
@@ -19,6 +27,7 @@ access_secret = config['configurations']['tweet-env']['access_secret']
 
 
 ### Cluster configuration ###
+nifi_dir = config['configurations']['tweet-env']['nifi_dir']
 master_configs = config['clusterHostInfo']
 ambari_server_host = str(master_configs['ambari_server_host'][0])
 namenode_host =  str(master_configs['namenode_host'][0])

@@ -2,6 +2,13 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
 <configuration>
+
+  <property>
+    <name>tweet_installdir</name>
+    <value>/opt/demotweet</value>
+    <description>Installation directory</description>
+  </property>
+
   <property>
     <name>tweet_piddir</name>
     <value>/var/run/tweetdemo</value>
