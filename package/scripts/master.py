@@ -47,7 +47,6 @@ class Master(Script):
     import params
     user_env=InlineTemplate(params.user_env)
     File(params.tweet_installdir + '/user-env.sh', content=user_env, owner='root',group='root')
-    nifi_env=InlineTemplate(params.nifi_env)
 
 
   def stop(self, env):
