@@ -7,7 +7,7 @@ config = Script.get_config()
 
 service_scriptsdir = os.path.realpath(__file__).split('/scripts')[0] + '/scripts/'
 
-nifi_dir = config['configurations']['tweet-env']['nifi-dir']
+nifi_dir = config['configurations']['tweet-env']['nifi_dir']
 tweet_piddir = config['configurations']['tweet-env']['tweet_piddir']
 
 
