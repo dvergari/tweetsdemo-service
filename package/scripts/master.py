@@ -40,7 +40,7 @@ class Master(Script):
     Directory(params.tweet_installdir, mode=0755, owner='root', group='root', recursive=True)
 
     Execute('echo Copying nifi flow to ' + params.nifi_dir + '/conf')
-    Execute('cp -f ' + params.service_scriptsdir + '../resources/flow.xml.gz ' + params.nifi_dir + '/conf/')
+    Execute('cp -f ' + params.service_scriptsdir + '../resources/flow.xml.gz /opt/HDF-1.2.0.0/conf/')
     self.configure(env)
    
   def configure(self, env):
