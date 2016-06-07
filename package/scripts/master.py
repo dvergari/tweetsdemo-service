@@ -34,7 +34,7 @@ class Master(Script):
     Execute('echo nimbus host: ' + params.nimbus_host)
     Execute('echo hive host: ' + params.hive_metastore_host)
     Execute('echo hbase host: ' + params.hbase_master_host)
-    Execute('echo kafka broker: ' + params.kafka_broker_host
+    Execute('echo kafka broker: ' + params.kafka_broker_host)
 
     Execute('echo Copying nifi flow to ' + params.nifi_dir + '/conf')
     Execute('cp ' + params.service_scriptsdir + '../resources/flow.xml.gz ' + params.nifi_dir + '/conf/')
