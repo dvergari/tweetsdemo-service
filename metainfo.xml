@@ -65,7 +65,7 @@
       <requiredServices>
         <service>HDFS</service>
         <service>STORM</service>
-      <requiredServices>
+      </requiredServices>
     </service>
   </services>
 </metainfo>
