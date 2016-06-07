@@ -46,14 +46,18 @@ class Master(Script):
   def configure(self, env):
     import params
     user_env=InlineTemplate(params.user_env)
-    File(params.demo_installdir + '/user-env.sh', content=user_env, owner='root',group='root')
+    File(params.tweet_installdir + '/user-env.sh', content=user_env, owner='root',group='root')
+    nifi_env=InlineTemplate(params.nifi_env)
 
 
   def stop(self, env):
     Execute ('echo stop')
 
   def start(self, env):
-    Execute ('echo start')
+    import params
+    config_twitter_script = os.path.join(params.service_scriptsdir,'setup_twitter.sh')
+    Execute ('chmod +x ' + config_twitter_script)
+    Execute (config_twitter_script + ' ' + params.tweet_installdir + ' GetTwitter ' + params.consumer_key + ' ' + params.consumer_secret + ' ' + params.access_token + ' ' + params.access_secret)
 
   def status(self, env):
     Execute ('echo status')

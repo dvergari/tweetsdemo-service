@@ -27,7 +27,8 @@ access_secret = config['configurations']['tweet-env']['access_secret']
 
 
 ### Cluster configuration ###
-nifi_dir = config['configurations']['tweet-env']['nifi_dir']
+nifi_dir = config['configurations']['nifi-ambari-config']['nifi.install_dir']
+nifi_port = config['configurations']['nifi-ambari-config']['nifi.port']
 master_configs = config['clusterHostInfo']
 ambari_server_host = str(master_configs['ambari_server_host'][0])
 namenode_host =  str(master_configs['namenode_host'][0])
@@ -42,5 +43,5 @@ if 'port' in config['configurations']['kafka-broker']:
   kafka_port = str(config['configurations']['kafka-broker']['port'])
 else:
   kafka_port = get_port_from_url(config['configurations']['kafka-broker']['listeners'])
-
+nifi_master_host = str(master_configs['nifi_master_hosts'][0])
 

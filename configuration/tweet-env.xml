@@ -57,6 +57,7 @@ kafka.zkRoot=
 kafka.consumer.group.id=group1
 
 
+
     </value>
   </property>
 </configuration>
