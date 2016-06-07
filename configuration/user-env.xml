@@ -4,7 +4,7 @@
 <configuration>
   <property>
     <name>ambari_username</name>
-    <value>admin</admin>
+    <value>admin</value>
     <description>Ambari admin username</description>
   </property>
 

@@ -29,7 +29,7 @@ class Master(Script):
 
     Execute('echo Scriptdir is: ' + params.service_scriptsdir)
 
-    Execute('echo installation directory is: ' params.tweet_installdir)
+    Execute('echo installation directory is: ' + params.tweet_installdir)
     Execute('echo ambari host: ' + params.ambari_server_host)
     Execute('echo namenode host: ' + params.namenode_host)
     Execute('echo nimbus host: ' + params.nimbus_host)
@@ -40,7 +40,7 @@ class Master(Script):
     Directory(params.tweet_installdir, mode=0755, owner='root', group='root', recursive=True)
 
     Execute('echo Copying nifi flow to ' + params.nifi_dir + '/conf')
-    Execute('cp ' + params.service_scriptsdir + '../resources/flow.xml.gz ' + params.nifi_dir + '/conf/')
+    Execute('cp -f ' + params.service_scriptsdir + '../resources/flow.xml.gz ' + params.nifi_dir + '/conf/')
     self.configure(env)
    
   def configure(self, env):

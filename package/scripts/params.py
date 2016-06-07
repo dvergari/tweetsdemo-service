@@ -9,7 +9,7 @@ service_scriptsdir = os.path.realpath(__file__).split('/scripts')[0] + '/scripts
 
 
 ### demo configuration ###
-demo_installdir = config['configurations']['tweet-env']['tweet_installdir']
+tweet_installdir = config['configurations']['tweet-env']['tweet_installdir']
 tweet_piddir = config['configurations']['tweet-env']['tweet_piddir']
 
 
