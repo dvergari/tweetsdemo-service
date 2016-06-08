@@ -39,8 +39,10 @@ class Master(Script):
 
     Directory(params.tweet_installdir, mode=0755, owner='root', group='root', recursive=True)
 
-    Execute('echo Copying nifi flow to ' + params.nifi_dir + '/conf')
-    Execute('cp -f ' + params.service_scriptsdir + '../resources/flow.xml.gz /opt/HDF-1.2.0.0/conf/')
+    Execute('echo Copying script to ' + params.tweet_installdir)
+    Execute('cp -f ' + params.service_scriptsdir + 'setup_nifi.sh ' + params.tweet_installdir)
+    Execute('cp -f ' + params.service_scriptsdir + 'setup_twitter.sh ' + params.tweet_installdir)
+    Execute('cp -f ' + params.service_scriptsdir + 'twitter_dashboard_v5.xml ' + params.tweet_installdir)
     self.configure(env)
    
   def configure(self, env):
@@ -48,6 +50,8 @@ class Master(Script):
     env.set_params(params)
     user_env=InlineTemplate(params.user_env)
     File(params.tweet_installdir + '/user-env.sh', content=user_env, owner='root',group='root')
+    tweet_env=InlineTemplate(params.tweet_env)
+    File(params.tweet_installdir + '/tweet-env.sh', content=tweet_env, owner='root',group='root')
 
 
   def stop(self, env):

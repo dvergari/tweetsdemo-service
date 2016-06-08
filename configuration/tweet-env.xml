@@ -3,24 +3,6 @@
 
 <configuration>
 
-  <property>
-    <name>tweet_installdir</name>
-    <value>/opt/demotweet</value>
-    <description>Installation directory</description>
-  </property>
-
-  <property>
-    <name>tweet_piddir</name>
-    <value>/var/run/tweetdemo</value>
-    <description>Process ID Directory</description>
-  </property>
-
-  <property>
-    <name>nifi_dir</name>
-    <value>/opt/HDF-1.2.0.0</value>
-    <description>Hortonworks DataFlow installation directory</description>
-  </property>
-
   <property require-input="true">
     <name>consumer_key</name>
     <value></value>
@@ -45,19 +27,23 @@
     <description>The Access Token Secret provided by Twitter</description>
   </property>
 
+  <property require-input="true">
+    <name>filter_terms</name>
+    <value>hadoop,@hadoop</value>
+    <description>The Access Token Secret provided by Twitter</description>
+  </property>
+
   <property>
     <name>content</name>
-    <description>This is the jinja template for config.properties file</description>
+    <description>This is the jinja template for tweet-env.sh file</description>
     <value>
-#### KAFKA SETTINGS ####
-kafka.brokers={{kafka_broker_host}}:{{kafka_port}}
-kafka.zookeeper.host.port={{kafka_broker_host}}:2181
-kafka.topic=truck_events
-kafka.zkRoot=
-kafka.consumer.group.id=group1
+### TWITTER configuration
+export CONSUMER_KEY="{{consumer_key}}"
+export CONSUMER_SECRET="{{consumer_secret}}"
+export ACCESS_TOKEN="{{access_token}}"
+export ACCESS_SECRET="{{access_secret}}"
 
-
-
+export FILTER_TERMS=""{{filter_terms}}"
     </value>
   </property>
 </configuration>

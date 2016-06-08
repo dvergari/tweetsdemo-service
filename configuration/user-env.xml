@@ -3,22 +3,15 @@
 
 <configuration>
   <property>
-    <name>ambari_username</name>
-    <value>admin</value>
-    <description>Ambari admin username</description>
+    <name>tweet_installdir</name>
+    <value>/opt/demotweet</value>
+    <description>Installation directory</description>
   </property>
 
   <property>
-      <name>ambari_password</name>
-      <value>admin</value>
-      <description>Ambari admin password</description>
-      <property-type>PASSWORD</property-type>
-  </property>
-
-  <property>
-    <name>ambari_port</name>
-    <value>8080</value>
-    <description>Ambari port</description>
+    <name>tweet_piddir</name>
+    <value>/var/run/tweetdemo</value>
+    <description>Process ID Directory</value>
   </property>
 
   <property>

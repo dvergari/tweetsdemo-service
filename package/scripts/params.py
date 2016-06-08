@@ -8,22 +8,16 @@ config = Script.get_config()
 service_scriptsdir = os.path.realpath(__file__).split('/scripts')[0] + '/scripts/'
 
 
-### demo configuration ###
-tweet_installdir = config['configurations']['tweet-env']['tweet_installdir']
-tweet_piddir = config['configurations']['tweet-env']['tweet_piddir']
 
 
-### Ambari configuration ###
-ambari_username = config['configurations']['user-env']['ambari_username']
-ambari_password = config['configurations']['user-env']['ambari_password']
-ambari_port = config['configurations']['user-env']['ambari_port']
-user_env = config['configurations']['user-env']['content']
 
 ### Twitter configuration ###
 consumer_key = config['configurations']['tweet-env']['consumer_key']
 consumer_secret = config['configurations']['tweet-env']['consumer_secret']
 access_token = config['configurations']['tweet-env']['access_token']
 access_secret = config['configurations']['tweet-env']['access_secret']
+filter_terms = config['configurations']['tweet-env']['filter_terms']
+tweet_env = config['configurations']['tweet-env']['content']
 
 
 ### Cluster configuration ###
@@ -45,3 +39,7 @@ else:
   kafka_port = get_port_from_url(config['configurations']['kafka-broker']['listeners'])
 nifi_master_host = str(master_configs['nifi_master_hosts'][0])
 
+### demo configuration ###
+tweet_installdir = config['configurations']['user-env']['tweet_installdir']
+tweet_piddir = config['configurations']['user-env']['tweet_piddir']
+user_env = config['configurations']['user-env']['content']
