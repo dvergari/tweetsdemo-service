@@ -41,7 +41,7 @@
 export CONSUMER_KEY="{{consumer_key}}"
 export CONSUMER_SECRET="{{consumer_secret}}"
 export ACCESS_TOKEN="{{access_token}}"
-export ACCESS_SECRET="{{access_secret}}"
+export ACCESS_TOKEN_SECRET="{{access_secret}}"
 
 export FILTER_TERMS=""{{filter_terms}}"
     </value>

@@ -59,9 +59,13 @@ class Master(Script):
 
   def start(self, env):
     import params
-    config_twitter_script = os.path.join(params.service_scriptsdir,'setup_twitter.sh')
+    config_nifi_script = os.path.join(params.tweet_installdir,'setup_nifi.sh')
+    nifi_template_xml = os.path.join(params.tweet_installdir,'twitter_dashboard_v5.xml')
+    Execute ('chmod +x ' + config_nifi_script)
+    Execute (config_nifi_script + ' ' + params.tweet_installdir + ' ' + nifi_template_xml + ' twitter_dashboard')
+    config_twitter_script = os.path.join(params.tweet_installdir,'setup_twitter.sh')
     Execute ('chmod +x ' + config_twitter_script)
-    Execute (config_twitter_script + ' ' + params.tweet_installdir + ' GetTwitter ' + params.consumer_key + ' ' + params.consumer_secret + ' ' + params.access_token + ' ' + params.access_secret)
+    Execute (config_twitter_script + ' ' + params.tweet_installdir + ' GetTwitter ')
 
   def status(self, env):
     Execute ('echo status')

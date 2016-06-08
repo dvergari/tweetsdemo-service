@@ -2,11 +2,6 @@
 
 export INSTALL_DIR=$1
 export PROCESSOR=$2
-export CONSUMER_KEY=$3
-export CONSUMER_SECRET=$4
-export ACCESS_TOKEN=$5
-export ACCESS_TOKEN_SECRET=$6
-
 
 
 source $INSTALL_DIR/user-env.sh
@@ -29,10 +24,14 @@ JSON="{\"revision\":
 {\"Consumer Key\": \"$CONSUMER_KEY\",
 \"Consumer Secret\": \"$CONSUMER_SECRET\",
 \"Access Token\": \"$ACCESS_TOKEN\",
-\"Access Token Secret\": \"$ACCESS_TOKEN_SECRET\"
+\"Access Token Secret\": \"$ACCESS_TOKEN_SECRET\",
+\"Terms to Filter On\": \"$FILTER_TERMS\"
 }}}}"
 
 echo $JSON
 
 curl -X PUT -H "Content-Type: application/json" http://$host/nifi-api/controller/process-groups/$P_GROUP_ID/processors/$PROCESSOR_ID -d "$JSON" >/dev/null 2&>1
 
+REVISION=`curl -H "Content-Type: application/json" http://$host/nifi-api/controller/revision 2>/dev/null| jq '.revision.version'`
+
+curl -X PUT -H 'Content-Type: application/x-www-form-urlencoded' http://$host/nifi-api/controller/process-groups/root/process-group-references/$P_GROUP_ID -d "running=true&version=$REVISION&clientId=demotweet"
