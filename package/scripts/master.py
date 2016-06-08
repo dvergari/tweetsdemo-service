@@ -45,6 +45,7 @@ class Master(Script):
    
   def configure(self, env):
     import params
+    env.set_params(params)
     user_env=InlineTemplate(params.user_env)
     File(params.tweet_installdir + '/user-env.sh', content=user_env, owner='root',group='root')
 
