@@ -5,6 +5,7 @@ export PROCESSOR=$2
 
 
 source $INSTALL_DIR/user-env.sh
+source $INSTALL_DIR/tweet-env.sh
 
 REVISION=`curl -H "Content-Type: application/json" http://$host/nifi-api/controller/revision 2>/dev/null| jq '.revision.version'`
 

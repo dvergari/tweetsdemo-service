@@ -61,6 +61,9 @@ class Master(Script):
     import params
     config_nifi_script = os.path.join(params.tweet_installdir,'setup_nifi.sh')
     nifi_template_xml = os.path.join(params.tweet_installdir,'twitter_dashboard_v5.xml')
+    #To change. Really bad!!!
+    Execute ('echo Wait 10 seconds to let NiFi starts')
+    Execute ('sleep 10')
     Execute ('chmod +x ' + config_nifi_script)
     Execute (config_nifi_script + ' ' + params.tweet_installdir + ' ' + nifi_template_xml + ' twitter_dashboard')
     config_twitter_script = os.path.join(params.tweet_installdir,'setup_twitter.sh')
