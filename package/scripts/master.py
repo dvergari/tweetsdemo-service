@@ -37,6 +37,8 @@ class Master(Script):
     Execute('echo hbase host: ' + params.hbase_master_host)
     Execute('echo kafka broker: ' + params.kafka_broker_host)
 
+
+    Directory(params.tweet_installdir, mode=0755, owner='root', group='root', recursive=True)
     Directory(params.tweet_installdir, mode=0755, owner='root', group='root', recursive=True)
 
     Execute('echo Copying script to ' + params.tweet_installdir)
@@ -47,8 +49,9 @@ class Master(Script):
    
   def configure(self, env):
     import params
+    import status_params
     env.set_params(params)
-    user_env=InlineTemplate(params.user_env)
+    user_env=InlineTemplate(status_params.user_env)
     File(params.tweet_installdir + '/user-env.sh', content=user_env, owner='root',group='root')
     tweet_env=InlineTemplate(params.tweet_env)
     File(params.tweet_installdir + '/tweet-env.sh', content=tweet_env, owner='root',group='root')
@@ -61,18 +64,43 @@ class Master(Script):
     import params
     config_nifi_script = os.path.join(params.tweet_installdir,'setup_nifi.sh')
     nifi_template_xml = os.path.join(params.tweet_installdir,'twitter_dashboard_v5.xml')
+    Execute ('pip install requests')
+    if not os.path.exists(status_params.tweet_piddir):
+        os.makedirs(status_params.tweet_piddir)
     #To change. Really bad!!!
-    Execute ('echo Wait 10 seconds to let NiFi starts')
-    Execute ('sleep 10')
+    Execute ('echo Wait 30 seconds to let NiFi starts')
+    Execute ('sleep 30')
     Execute ('chmod +x ' + config_nifi_script)
     Execute (config_nifi_script + ' ' + params.tweet_installdir + ' ' + nifi_template_xml + ' twitter_dashboard')
     config_twitter_script = os.path.join(params.tweet_installdir,'setup_twitter.sh')
     Execute ('chmod +x ' + config_twitter_script)
     Execute (config_twitter_script + ' ' + params.tweet_installdir + ' GetTwitter ')
 
+
   def status(self, env):
-    Execute ('echo status')
+    import params
+    import status_params
+    self.check_flow_running(status_params.tweet_pidfile, params.nifi_master_host, params.nifi_port)
 
 
+  def check_flow_running(self, pid_file, host, port):
+    import requests
+    if not pid_file or not os.path.isfile(pid_file):
+      raise ComponentIsNotRunning()
+    try:
+      f = open(pid_file,"r")
+      p_group_id = f.read()
+      f.close()
+      
+      req = 'http://' + host + ':' + port + '/controller/process-groups/root/process-group-references/' + p_group_id.strip()
+      Execute ('echo ' + req)
+      r = requests.get(req)
+      if r.status_code != requests.code.ok:
+        raise ComponentIsNotRunning()
+      if r.json()["processGroup"]["runningCount"] < 26:
+        raise ComponentIsNotRunning()
+    except Exception, e:
+        raise ComponentIsNotRunning()
+    
 if __name__ == "__main__":
   Master().execute() 

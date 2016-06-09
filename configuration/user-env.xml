@@ -20,6 +20,10 @@
     <value>
 # Nifi configuration
 host="{{nifi_master_host}}:{{nifi_port}}"
+
+# Twitter dashboard configuration
+tweet_piddir="{{tweet_piddir}}"
+tweet_pidfile="{{tweet_pidfile}}"
     </value>
   </property>
 

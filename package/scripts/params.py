@@ -41,5 +41,3 @@ nifi_master_host = str(master_configs['nifi_master_hosts'][0])
 
 ### demo configuration ###
 tweet_installdir = config['configurations']['user-env']['tweet_installdir']
-tweet_piddir = config['configurations']['user-env']['tweet_piddir']
-user_env = config['configurations']['user-env']['content']

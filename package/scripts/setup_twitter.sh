@@ -36,3 +36,5 @@ curl -X PUT -H "Content-Type: application/json" http://$host/nifi-api/controller
 REVISION=`curl -H "Content-Type: application/json" http://$host/nifi-api/controller/revision 2>/dev/null| jq '.revision.version'`
 
 curl -X PUT -H 'Content-Type: application/x-www-form-urlencoded' http://$host/nifi-api/controller/process-groups/root/process-group-references/$P_GROUP_ID -d "running=true&version=$REVISION&clientId=demotweet"
+
+echo $P_GROUP_ID > $tweet_pidfile

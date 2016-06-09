@@ -43,7 +43,7 @@ export CONSUMER_SECRET="{{consumer_secret}}"
 export ACCESS_TOKEN="{{access_token}}"
 export ACCESS_TOKEN_SECRET="{{access_secret}}"
 
-export FILTER_TERMS=""{{filter_terms}}"
+export FILTER_TERMS="{{filter_terms}}"
     </value>
   </property>
 </configuration>

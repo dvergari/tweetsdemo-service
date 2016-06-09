@@ -64,6 +64,7 @@
         <osSpecific>
           <osFamily>any</osFamily>
           <packages>
+            <package><name>python-pip</name></package>
             <package><name>jq</name></package>
             <package><name>git</name></package>
             <package><name>wget</name></package>
