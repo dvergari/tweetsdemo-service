@@ -26,6 +26,7 @@ class Master(Script):
   def install(self, env):
     self.install_packages(env)
     import params
+    import status_params
 
     Execute('echo Scriptdir is: ' + params.service_scriptsdir)
 
@@ -39,7 +40,7 @@ class Master(Script):
 
 
     Directory(params.tweet_installdir, mode=0755, owner='root', group='root', recursive=True)
-    Directory(params.tweet_installdir, mode=0755, owner='root', group='root', recursive=True)
+    Directory(params.tweet_piddir, mode=0755, owner='root', group='root', recursive=True)
 
     Execute('echo Copying script to ' + params.tweet_installdir)
     Execute('cp -f ' + params.service_scriptsdir + 'setup_nifi.sh ' + params.tweet_installdir)
@@ -62,6 +63,8 @@ class Master(Script):
 
   def start(self, env):
     import params
+    import status_params
+    self.configure(env)
     config_nifi_script = os.path.join(params.tweet_installdir,'setup_nifi.sh')
     nifi_template_xml = os.path.join(params.tweet_installdir,'twitter_dashboard_v5.xml')
     Execute ('pip install requests')
