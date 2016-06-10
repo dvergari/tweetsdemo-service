@@ -80,14 +80,14 @@ class Master(Script):
     Execute ('chmod +x ' + config_twitter_script)
     Execute (config_twitter_script + ' ' + params.tweet_installdir + ' GetTwitter ')
 
-
   def status(self, env):
-    import params
     import status_params
-    self.check_flow_running(status_params.tweet_pidfile, params.nifi_master_host, params.nifi_port)
+    self.check_flow_running(status_params.tweet_pidfile, "sandbox.hortonworks.com", "9090")
 
 
-  def check_flow_running(self, pid_file, host, port):
+
+
+  def check_flow_running(self, pid_file, host):
     import requests
     if not pid_file or not os.path.isfile(pid_file):
       raise ComponentIsNotRunning()
@@ -95,16 +95,14 @@ class Master(Script):
       f = open(pid_file,"r")
       p_group_id = f.read()
       f.close()
-      
-      req = 'http://' + host + ':' + port + '/controller/process-groups/root/process-group-references/' + p_group_id.strip()
-      Execute ('echo ' + req)
+      req = 'http://' + host + ':' + port + '/nifi-api/controller/process-groups/root/process-group-references/' + p_group_id.strip()
       r = requests.get(req)
       if r.status_code != requests.code.ok:
         raise ComponentIsNotRunning()
       if r.json()["processGroup"]["runningCount"] < 26:
         raise ComponentIsNotRunning()
     except Exception, e:
-        raise ComponentIsNotRunning()
+      raise ComponentIsNotRunning()
     
 if __name__ == "__main__":
   Master().execute() 
