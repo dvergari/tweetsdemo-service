@@ -97,7 +97,7 @@ class Master(Script):
       f.close()
       req = 'http://' + host + ':' + port + '/nifi-api/controller/process-groups/root/process-group-references/' + p_group_id.strip()
       r = requests.get(req)
-      if r.status_code != requests.code.ok:
+      if r.status_code != requests.codes.ok:
         raise ComponentIsNotRunning()
       if r.json()["processGroup"]["runningCount"] < 26:
         raise ComponentIsNotRunning()
