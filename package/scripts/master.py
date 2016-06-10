@@ -87,7 +87,7 @@ class Master(Script):
 
 
 
-  def check_flow_running(self, pid_file, host):
+  def check_flow_running(self, pid_file, host, port):
     import requests
     if not pid_file or not os.path.isfile(pid_file):
       raise ComponentIsNotRunning()
