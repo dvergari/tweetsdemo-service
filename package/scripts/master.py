@@ -60,7 +60,18 @@ class Master(Script):
 
 
   def stop(self, env):
-    Execute ('echo stop')
+    import params
+    import status_params
+    import requests
+    self.configure(env)
+    f = open(status_params.tweet_pidfile,"r")
+    p_group_id = f.read()
+    f.close()
+    host = params.nifi_master_host + ':' + str(params.nifi_port)
+    version = requests.get('http://' + host + '/nifi-api/controller/revision').json()["revision"]["version"]
+    req = 'http://' + host + '/nifi-api/controller/process-groups/root/process-group-references/' + p_group_id.strip()                
+    r = requests.put(req, data={'running':'false', 'version':version, 'clientId':'demotweet'})
+    Execute('rm ' + status_params.tweet_pidfile, ignore_failures=True)
 
   def start(self, env):
     import params
