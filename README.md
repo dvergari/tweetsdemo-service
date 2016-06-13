@@ -22,7 +22,6 @@ Limitations:
 - Import Hortonworks sandbox into your virtualization engine.
 - Start the VM.
 - If using VirtualBox, add port forwarding to port 9090 to allow your browser access NiFi WebUI.
-![Image](../master/screenshots/port_forwarding.PNG?raw=true)
 - Install and start Apache NiFi following [these](https://github.com/abajwa-hw/ambari-nifi-service) instructions.
 - **Make sure Kafka is running and out of maintenance mode**. 
 - Start solr by connecting via SSH and run the following command:
@@ -41,11 +40,10 @@ ambari server restart
 On bottom left -> Actions -> Add service -> 'IoT Demo' -> Next -> Next -> Configure service -> Fill required fields -> Next -> Deploy
 
 - Remember to fill the required fields while configuring the demo. You can create your own Twitter access token by following [these](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) instructions
-![Image](../master/screenshots/configure_service.PNG?raw=true)
+
 
 - On successful deployment you will see the TWEETDEMO service as part of Ambari stack and will be able to start/stop the service from here:
-![Image](../master/screenshots/installed.PNG?raw=true)
-![Image](../master/screenshots/stack.PNG?raw=true)
+
 
 - Also, you will see a new Process group on the NiFi WebUI with all components started
-![Image](../master/screenshots/nifi_p_group.PNG?raw=true)
+
