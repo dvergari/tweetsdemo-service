@@ -1,4 +1,4 @@
-![alt tag](https://raw.githubusercontent.com/dvergari/tweetsdemo-service/master/package/screenshot/installed.PNG)
+![Image](https://raw.githubusercontent.com/dvergari/tweetsdemo-service/master/package/screenshot/installed.PNG)
 #### An ambari service to deploy a real-word data ingestion from twitter to solr
 This tweets demo service show real time tweets on a dashbord. It requires Kafka, HDF and SolR already installed and started on the Sandbox
 
