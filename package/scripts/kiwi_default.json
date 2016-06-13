@@ -1331,13 +1331,11 @@
     "dropdown_collections": false
   },
   "solr": {
-    "server": "http://hdpmaster02.ecubecenter.net:8983/solr/",
+    "server": "http://localhost:8983/solr/",
     "core_name": "twitterAll",
     "core_list": [
-      "twitterAll_shard1_replica2",
-      "twitterAll_shard3_replica2",
-      "twittersMap_shard1_replica2",
-      "twittersMap_shard3_replica2"
+      "twitterAll_shard1_replica1",
+      "twittersMap_shard1_replica1"
     ],
     "global_params": "&df=id"
   }
