@@ -4,7 +4,7 @@
     <service>
       <name>TWEETDEMO</name>
       <displayName>Tweets Demo</displayName>
-      <comment>This tweets demo service show real time tweets on a dashbord. It requires storm already installed and started on the Sandbox</comment>
+      <comment>This tweets demo service show real time tweets on a dashbord.</comment>
       <version>0.0.1</version>
       <components>
         <component>

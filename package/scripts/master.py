@@ -46,6 +46,21 @@ class Master(Script):
     Execute('cp -f ' + params.service_scriptsdir + 'setup_nifi.sh ' + params.tweet_installdir)
     Execute('cp -f ' + params.service_scriptsdir + 'setup_twitter.sh ' + params.tweet_installdir)
     Execute('cp -f ' + params.service_scriptsdir + 'twitter_dashboard_v5.xml ' + params.tweet_installdir)
+    Execute('cp -f ' + params.service_scriptsdir + 'banana_default.json ' + params.tweet_installdir)
+    Execute('cp -f ' + params.service_scriptsdir + 'kiwi_default.json ' + params.tweet_installdir)
+    Execute('cp -f ' + params.service_scriptsdir + 'twitterAll_configsets.tgz ' + params.tweet_installdir)
+    Execute('cp -f ' + params.service_scriptsdir + 'twittersMap_configsets.tgz ' + params.tweet_installdir)
+
+    Execute('tar -xf ' + params.tweet_installdir + '/twitterAll_configsets.tgz -C /opt/lucidworks-hdpsearch/solr/server/solr/configsets/')
+    Execute('tar -xf ' + params.tweet_installdir + '/twittersMap_configsets.tgz -C /opt/lucidworks-hdpsearch/solr/server/solr/configsets/')
+
+    Execute('/opt/lucidworks-hdpsearch/solr/bin/solr create -c twitterAll -d /opt/lucidworks-hdpsearch/solr/server/solr/configsets/data_driven_schema_configs_twitterAll/conf -n twitterAll -s 1 -rf 1')
+    Execute('/opt/lucidworks-hdpsearch/solr/bin/solr create -c twittersMap -d /opt/lucidworks-hdpsearch/solr/server/solr/configsets/data_driven_schema_configs_twittersMap/conf -n twittersMap -s 1 -rf 1')
+
+    Execute('cp -pR /opt/lucidworks-hdpsearch/solr/server/solr-webapp/webapp/banana /opt/lucidworks-hdpsearch/solr/server/solr-webapp/webapp/kiwi')
+    Execute('cp ' + params.tweet_installdir + '/banana_default.json  /opt/lucidworks-hdpsearch/solr/server/solr-webapp/webapp/banana/app/dashboards/default.json')
+    Execute('cp ' + params.tweet_installdir + '/kiwi_default.json /opt/lucidworks-hdpsearch/solr/server/solr-webapp/webapp/kiwi/app/dashboards/default.json')
+
     self.configure(env)
    
   def configure(self, env):
