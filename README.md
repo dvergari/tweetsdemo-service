@@ -37,7 +37,7 @@ ambari server restart
 ```
 - Then you can click on 'Add Service' from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
 
-On bottom left -> Actions -> Add service -> 'IoT Demo' -> Next -> Next -> Configure service -> Fill required fields -> Next -> Deploy
+On bottom left -> Actions -> Add service -> 'Tweets demo' -> Next -> Next -> Configure service -> Fill required fields -> Next -> Deploy
 
 - Remember to fill the required fields while configuring the demo. You can create your own Twitter access token by following [these](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) instructions
 
