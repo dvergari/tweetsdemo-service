@@ -44,6 +44,7 @@ On bottom left -> Actions -> Add service -> 'Tweets demo' -> Next -> Next -> Con
 
 - On successful deployment you will see the TWEETDEMO service as part of Ambari stack and will be able to start/stop the service from here:
 
+- Connect to the Banana interface to see the tweets http://localhost:8983/solr/kiwi/index.html#/dashboard
 
 - Also, you will see a new Process group on the NiFi WebUI with all components started
 
