@@ -54,10 +54,10 @@ class Master(Script):
     Execute('tar -xf ' + params.tweet_installdir + '/twitterAll_configsets.tgz -C /opt/lucidworks-hdpsearch/solr/server/solr/configsets/')
     Execute('tar -xf ' + params.tweet_installdir + '/twittersMap_configsets.tgz -C /opt/lucidworks-hdpsearch/solr/server/solr/configsets/')
 
-    Execute('su - hdfs -c hdfs dfs -mkdir /solr')
-    Execute('su - hdfs -c hdfs dfs -chown solr /solr')
-    Execute('su - hdfs -c hdfs dfs -mkdir /demotweets')
-    Execute('su - hdfs -c hdfs dfs -chown root /demotweets')
+    Execute('su - hdfs -c "hdfs dfs -mkdir -p /solr"')
+    Execute('su - hdfs -c "hdfs dfs -chown solr /solr"')
+    Execute('su - hdfs -c "hdfs dfs -mkdir -p /demotweets"')
+    Execute('su - hdfs -c "hdfs dfs -chown root /demotweets"')
 
     Execute('/opt/lucidworks-hdpsearch/solr/bin/solr create -c twitterAll -d /opt/lucidworks-hdpsearch/solr/server/solr/configsets/data_driven_schema_configs_twitterAll/conf -n twitterAll -s 1 -rf 1')
     Execute('/opt/lucidworks-hdpsearch/solr/bin/solr create -c twittersMap -d /opt/lucidworks-hdpsearch/solr/server/solr/configsets/data_driven_schema_configs_twittersMap/conf -n twittersMap -s 1 -rf 1')
