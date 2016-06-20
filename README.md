@@ -33,7 +33,7 @@ Limitations:
 ```
 VERSION=`hdp-select status hadoop-client | sed 's/hadoop-client - \([0-9]\.[0-9]\).*/\1/'`
 git clone https://github.com/dvergari/tweetsdemo-service.git /var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/TWEET
-ambari server restart
+ambari-server restart
 ```
 - Then you can click on 'Add Service' from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
 
