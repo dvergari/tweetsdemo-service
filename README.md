@@ -18,7 +18,7 @@ Limitations:
 
 ##### Setup steps
 
-- Download HDP 2.4 sandbox VM image (Sandbox_HDP_2.2.4.2_VirtualBox.ova) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/)
+- Download HDP 2.4 sandbox VM image (HDP_2.4_virtualbox_v3) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/)
 - Import Hortonworks sandbox into your virtualization engine.
 - Start the VM.
 - If using VirtualBox, add port forwarding to port 9090 to allow your browser access NiFi WebUI.
@@ -33,7 +33,7 @@ Limitations:
 ```
 VERSION=`hdp-select status hadoop-client | sed 's/hadoop-client - \([0-9]\.[0-9]\).*/\1/'`
 git clone https://github.com/dvergari/tweetsdemo-service.git /var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/TWEET
-ambari server restart
+ambari-server restart
 ```
 - Then you can click on 'Add Service' from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
 
@@ -44,6 +44,7 @@ On bottom left -> Actions -> Add service -> 'Tweets demo' -> Next -> Next -> Con
 
 - On successful deployment you will see the TWEETDEMO service as part of Ambari stack and will be able to start/stop the service from here:
 
+- Connect to the Banana interface to see the tweets http://localhost:8983/solr/kiwi/index.html#/dashboard
 
 - Also, you will see a new Process group on the NiFi WebUI with all components started
 
