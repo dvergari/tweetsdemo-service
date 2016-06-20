@@ -18,7 +18,7 @@ Limitations:
 
 ##### Setup steps
 
-- Download HDP 2.4 sandbox VM image (Sandbox_HDP_2.2.4.2_VirtualBox.ova) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/)
+- Download HDP 2.4 sandbox VM image (HDP_2.4_virtualbox_v3) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/)
 - Import Hortonworks sandbox into your virtualization engine.
 - Start the VM.
 - If using VirtualBox, add port forwarding to port 9090 to allow your browser access NiFi WebUI.
